@@ -1,0 +1,14 @@
+{
+    "engine": "Nuke",
+    "task": "edit",
+    "extension": "mov",
+    "resolution": "1920x1080",
+    "fps": "30",
+    "options": {
+        "mov64_codec": "appr",
+        "mov64_quality": "High",
+        "mov64_bitrate": "20000",
+        "mov_prores_codec_profile": "ProRes 4:4:4:4 12-bit"
+    },
+    "slate": true
+}

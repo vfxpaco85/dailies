@@ -1,0 +1,11 @@
+{
+    "engine": "FFmpeg",
+    "task": "edit",
+    "extension": "mov",
+    "resolution": "1920x1080",
+    "fps": "30",
+    "options": {
+        "y": null
+    },
+    "slate": true
+}

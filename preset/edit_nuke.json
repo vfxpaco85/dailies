@@ -1,0 +1,13 @@
+{
+    "engine": "Nuke",
+    "task": "edit",
+    "extension": "mov",
+    "resolution": "1920x1080",
+    "fps": "30",
+    "options": {
+        "mov64_codec": "h264",
+        "mov64_quality": "High",
+        "mov64_bitrate": "15000"
+    },
+    "slate": true
+}

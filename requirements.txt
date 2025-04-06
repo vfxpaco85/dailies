@@ -1,0 +1,8 @@
+# GUI Framework
+PySide6==6.5.0
+
+# Shotgun API
+shotgun_api3==3.5.1
+
+# Note: FFmpeg, Nuke, and RV are external software, and must be installed separately.
+# Please refer to setup_instructions.md

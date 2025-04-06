@@ -1,0 +1,14 @@
+{
+    "engine": "Nuke",
+    "task": "edit",
+    "extension": "mov",
+    "resolution": "1920x1080",
+    "fps": "30",
+    "options": {
+        "mov64_codec": "AVdn",
+        "mov64_quality": "High",
+        "mov64_bitrate": "20000",
+        "mov64_dnxhd_codec_profile": "DNxHD 422 10-bit 220Mbit"
+    },
+    "slate": true
+}

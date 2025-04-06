@@ -1,0 +1,6 @@
+{
+    "engine": "Nuke-Template",
+    "task": "edit",
+    "template": "C:/code/python/vfx/dailies/template/foobar.nk",
+    "slate": true
+}
