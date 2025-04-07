@@ -62,6 +62,7 @@ class DailiesUI(QWidget):
         self.setWindowTitle("Dailies Tool")
         self.setGeometry(100, 100, 400, 600)
         self._setup_ui(presets)
+        self._set_field_tooltips()
 
         self._is_error = False
 
@@ -343,6 +344,49 @@ class DailiesUI(QWidget):
         self.template_input.setEnabled(enabled)
         self.template_button.setEnabled(enabled)
 
+    def _set_field_tooltips(self):
+        """
+        Sets helpful tooltips for each field in the UI to guide the user.
+        """
+        self.input_path.setToolTip("Select the input video or image file.")
+        self.version_input.setToolTip(
+            "Enter the version name of the media (e.g., 'foobar_v001')."
+        )
+        self.description_input.setToolTip(
+            "Provide a brief description of the daily submission."
+        )
+        self.artist_input.setToolTip(
+            "Enter the artist's name responsible for the media."
+        )
+        self.link_input.setToolTip(
+            "Provide an entity (e.g. asset,sequence or shot) for the daily."
+        )
+        self.task_input.setToolTip("Enter the task associated with this media.")
+        self.project_input.setToolTip("Enter the project name.")
+        self.tracking_checkbox.setToolTip(
+            "Check this box to create a version for the entity in the tracking software."
+        )
+        self.preset_input.setToolTip("Select a render preset (if any).")
+        self.engine_input.setToolTip(
+            "Select the rendering engine to use (e.g., FFmpeg, Nuke)."
+        )
+        self.resolution_input.setToolTip(
+            "Enter the resolution in the format 'width x height' (e.g., 1920x1080)."
+        )
+        self.fps_input.setToolTip(
+            "Enter the FPS (Frames Per Second) for the media (e.g., 24)."
+        )
+        self.options_input.setToolTip(
+            "Enter any additional options as key-value pairs (e.g., 'key=value')."
+        )
+        self.template_input.setToolTip("Select the Nuke template file.")
+        self.output_path.setToolTip(
+            "Select the output file path where the rendered media will be saved."
+        )
+        self.slate_checkbox.setToolTip(
+            "Check this box if you want to generate a slate for the video."
+        )
+
     def _show_error(self, title, message):
         """Displays an error message box."""
         msg = QMessageBox(self)
@@ -472,7 +516,7 @@ class DailiesUI(QWidget):
     def set_options(self, options):
         """
         Sets the options input field with a comma-separated string of key-value pairs or flags 
-    based on the provided options dictionary.
+        based on the provided options dictionary.
 
         Args:
             options (dict): A dictionary where keys are option names and values are either 
