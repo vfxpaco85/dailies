@@ -16,6 +16,8 @@ from dailies.constant.engine import (
     FFMPEG_FONT_SIZE,
     FFMPEG_SPACING_SIZE,
     FFMPEG_FONT_PATH,
+    IMAGE_SEQUENCES_FILE_TYPES,
+    VIDEO_FILE_TYPES,
 )
 from dailies.engine.video_engine import VideoEngine, generate_slate_text
 
@@ -89,8 +91,15 @@ class FFmpegEngine(VideoEngine):
             logger.error(f"Unsupported file extension for FFmpeg: {extension}")
             return
 
-        # Get codec and pixel format for the given file extension
-        codec, pix_fmt = FORMAT_CODECS["ffmpeg"][extension]
+        codec = None
+        pix_fmt = None
+
+        # We don't need codec and pixel format when extracting image sequence from video
+        input_file_extension = os.path.splitext(input_path)[1][1:].lower()
+        if not input_file_extension in VIDEO_FILE_TYPES and extension in IMAGE_SEQUENCES_FILE_TYPES:
+
+            # Get codec and pixel format for the given file extension
+            codec, pix_fmt = FORMAT_CODECS["ffmpeg"][extension]
 
         # If slate data is provided, generate and add a slate frame (only for image sequences)
         slate_file = None
@@ -153,13 +162,19 @@ class FFmpegEngine(VideoEngine):
             "-f", "concat",  # Specify concatenation mode
             "-safe", "0",  # Allow unsafe file paths
             "-i", input_list_file,  # Use the temporary file list
-            "-c:v", codec,  # Video codec
-            "-pix_fmt", pix_fmt,  # Pixel format
             "-s", f"{resolution[0]}x{resolution[1]}",  # Resolution
             "-threads", "4",  # Tell FFmpeg to use 4 threads
         ]
 
-        # If fps is provided (i.e., it's an image sequence), add the fps option
+        # Only add codec if it's not None
+        if codec:
+            ffmpeg_command.extend(["-c:v", codec])
+
+        # Only add pix_fmt if it's not None
+        if pix_fmt:
+            ffmpeg_command.extend(["-pix_fmt", pix_fmt])
+
+        # Only add fps if it's not None
         if fps:
             ffmpeg_command.append("-r")
             ffmpeg_command.append(str(fps))
