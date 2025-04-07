@@ -39,8 +39,8 @@ The following external software must be installed separately. Ensure that these 
 - **RV**: RV is also proprietary software. Install it from [RV Downloads](https://www.foundry.com/products/rv)
   - Ensure the `rv` executable is added to your system's `PATH`.
 
-### 3. **Modify `constants.tracking.py` Module **:
-The `dailies.constants.tracking.py` file contains essential configuration information for the tracking software. You must update the following fields accordingly:
+### 3. **Modify \`constant.tracking.py\` Module **:
+The `dailies.constant.tracking.py` file contains essential configuration information for the tracking software. You must update the following fields accordingly:
 
 - **Tracking Software Configuration**: Specify the tracking engine you wish to use (e.g., **Shotgun**, **Ftrack**, **Kitsu**, **Flow**) by setting the `TRACKING_ENGINE` variable.
 - **API URLs**: Update the API URLs for the tracking systems in the `API_URLS` dictionary.
