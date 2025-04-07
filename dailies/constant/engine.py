@@ -41,6 +41,7 @@ SUPPORTED_FILE_TYPES = {
         "exr",
         "gif",
         "hdr",
+        "jpg",
         "jpeg",
         "mov",
         "mp4",
@@ -62,6 +63,7 @@ FORMAT_CODECS = {
         "exr": ("exr", "rawvideo"),
         "gif": ("gif", "gif"),
         "hdr": ("hdr", "rawvideo"),
+        "jpg": ("mjpeg", "mjpeg"),
         "jpeg": ("mjpeg", "mjpeg"),
         "jpeg2000": ("jpeg2000", "jpeg2000"),
         "mov": ("libx264", "yuv420p"),
@@ -93,8 +95,8 @@ IMAGE_SEQUENCES_FILE_TYPES = [
     "exr",
     "gif",
     "hdr",
-    "jpeg",
     "jpg",
+    "jpeg",
     "mxf",
     "png",
     "sgi",
@@ -102,4 +104,12 @@ IMAGE_SEQUENCES_FILE_TYPES = [
     "tiff",
     "xpm",
     "yuv",
+]
+
+# List of supported video formats
+VIDEO_FILE_TYPES = [
+    "mov",
+    "mp4",
+    "mxf",
+    "jpeg2000",
 ]
