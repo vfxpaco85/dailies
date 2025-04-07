@@ -113,7 +113,7 @@ class DailiesUI(QWidget):
         form_layout.addRow(QLabel("Version Name:"), self.version_input)
         form_layout.addRow(QLabel("Description:"), self.description_input)
         form_layout.addRow(QLabel("Artist:"), self.artist_input)
-        form_layout.addRow(QLabel("Link:"), self.link_input)
+        form_layout.addRow(QLabel("Entity:"), self.link_input)
         form_layout.addRow(QLabel("Task:"), self.task_input)
         form_layout.addRow(QLabel("Project:"), self.project_input)
         form_layout.addRow(tracking_checkbox_layout)  # Tracking checkbox
@@ -389,7 +389,7 @@ class DailiesUI(QWidget):
             "Enter the artist's name responsible for the media."
         )
         self.link_input.setToolTip(
-            "Provide an entity (e.g. asset,sequence or shot) for the daily."
+            "Provide an entity name (e.g. asset, sequence or shot) for the daily."
         )
         self.task_input.setToolTip("Enter the task associated with this media.")
         self.project_input.setToolTip("Enter the project name.")
