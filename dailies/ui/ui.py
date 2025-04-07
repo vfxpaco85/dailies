@@ -27,7 +27,7 @@ from dailies.constant.main import (
     FRAME_PADDING_FORMAT,
     FRAME_START_NUMBER,
 )
-from dailies.constant.engine import SUPPORTED_FILE_TYPES
+from dailies.constant.engine import SUPPORTED_FILE_TYPES, IMAGE_SEQUENCES_FILE_TYPES
 from dailies.constant.tracking import TRACKING_ENGINE
 from dailies.factory import VideoEngineFactory, TrackingSoftwareFactory
 from dailies.preset import load_presets_from_folder
@@ -217,14 +217,9 @@ class DailiesUI(QWidget):
         file_path, _ = QFileDialog.getOpenFileName(self, title, "", filter)
         if file_path:
 
-            # Check if the file path contains a sequence of numbers
-            # Captures the name, number, and extension
-            sequence_pattern = r"(\D+)(\d+)(\.\w+)$"
-            match = re.match(sequence_pattern, file_path)
-
-            if match:
-                # Replace the frame number with the frame padding format
-                file_path = file_path.replace(match.group(2), FRAME_PADDING_FORMAT)
+            file_extension = os.path.splitext(file_path)[1][1:].lower()
+            if file_extension in IMAGE_SEQUENCES_FILE_TYPES:
+                file_path = self._get_image_sequence_file_path(file_path)
 
             # Set the path input with the processed path
             callback(file_path.replace("\\", "/"))
@@ -235,8 +230,15 @@ class DailiesUI(QWidget):
 
     def _browse_file_output(self):
         """Opens a file dialog for selecting an output file and sets the path."""
-        file_path, _ = QFileDialog.getSaveFileName(self, "Select Output File", "", "All Files (*)")
+        file_path, _ = QFileDialog.getSaveFileName(
+            self, "Select Output File", "", "All Files (*)"
+        )
         if file_path:
+
+            file_extension = os.path.splitext(file_path)[1][1:].lower()
+            if file_extension in IMAGE_SEQUENCES_FILE_TYPES:
+                file_path = self._get_image_sequence_file_path(file_path)
+
             self.output_path.setText(file_path.replace("\\", "/"))
 
     def _browse_file_nuke_template(self):
@@ -306,6 +308,33 @@ class DailiesUI(QWidget):
             logger.error(f"Error during version creation: {e}")
             self._show_error("Tracking Error", f"{e}")
             self._is_error = True
+
+    def _get_image_sequence_file_path(self, file_path):
+        """
+        Processes a file path for image sequences and replaces the frame number
+        with a dynamically generated padding format based on the sequence.
+
+        Args:
+            path (str): The file path to be processed.
+
+        Returns:
+            str: The file path with the frame number replaced by the padding format.
+        """
+        # Check if the file path contains a sequence of numbers
+        # Captures the name, number, and extension
+        sequence_pattern = r"(\D+)(\d+)(\.\w+)$"
+        match = re.match(sequence_pattern, file_path)
+
+        if match:
+            # Extract the frame number and calculate the padding length dynamically
+            frame_number = match.group(2)
+            padding_length = len(frame_number)
+            padding_format = f"%0{padding_length}d"
+
+            # Replace the frame number with the dynamic padding format
+            file_path = file_path.replace(frame_number, padding_format)
+
+        return file_path
 
     def _log_submission(self):
         """Logs the data from the form submission."""
