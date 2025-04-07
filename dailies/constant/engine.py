@@ -86,3 +86,20 @@ FORMAT_CODECS = {
         "targa": "tga",
     },
 }
+
+# List of supported image sequence formats for detection
+IMAGE_SEQUENCES_FILE_TYPES = [
+    "dpx",
+    "exr",
+    "gif",
+    "hdr",
+    "jpeg",
+    "jpg",
+    "mxf",
+    "png",
+    "sgi",
+    "targa",
+    "tiff",
+    "xpm",
+    "yuv",
+]
