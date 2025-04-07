@@ -1,12 +1,13 @@
 import os
 from datetime import datetime
 
+
 def get_daily_tmp_directory(base_path: str) -> str:
     """
     Creates a directory for the current date under the given base path.
     If the directory already exists, it returns the existing directory path.
     Otherwise, it creates the directory.
-    
+
     Ensures the base path exists before proceeding.
 
     Args:
@@ -14,8 +15,13 @@ def get_daily_tmp_directory(base_path: str) -> str:
                          For example: "C:/Users/YourUser/AppData/Local/Temp"
 
     Returns:
-        str: The full path to the daily directory. If the directory already exists, it returns the path to the existing directory.
-    
+        str: The full path to the daily directory. If the directory already exists,
+             it returns the path to the existing directory.
+
+    Raises:
+        ValueError: If the base path does not exist.
+        Exception: If the directory creation fails due to an exception.
+
     Example:
         base_path = "C:/Users/YourUser/AppData/Local/Temp"
         daily_tmp_dir = get_daily_tmp_directory(base_path)
@@ -43,3 +49,14 @@ def get_daily_tmp_directory(base_path: str) -> str:
         print(f"Directory already exists: {tmp_directory}")
 
     return tmp_directory
+
+
+def get_package_root_directory():
+    """
+    Returns the root directory of the package, which is the directory
+    that contains the 'dailies' directory.
+
+    Returns:
+        str: The root directory path of the package, one level up from the 'dailies' directory.
+    """
+    return os.path.join(os.getcwd()[: os.getcwd().rfind("dailies")])
