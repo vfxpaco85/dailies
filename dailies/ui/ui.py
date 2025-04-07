@@ -65,6 +65,7 @@ class DailiesUI(QWidget):
         self._set_field_tooltips()
 
         self._is_error = False
+        self.presets = presets
 
         if environment:
             self.prefill_form(environment)
@@ -515,11 +516,11 @@ class DailiesUI(QWidget):
 
     def set_options(self, options):
         """
-        Sets the options input field with a comma-separated string of key-value pairs or flags 
+        Sets the options input field with a comma-separated string of key-value pairs or flags
         based on the provided options dictionary.
 
         Args:
-            options (dict): A dictionary where keys are option names and values are either 
+            options (dict): A dictionary where keys are option names and values are either
                             None (for flags) or a string representing the option value.
         """
         options_str = []
@@ -622,8 +623,8 @@ class DailiesUI(QWidget):
             if extension in items:
                 self.extension_input.setCurrentText(extension)
 
-        if preset != "None" and preset in presets:
-            preset_info = presets[preset]
+        if preset != "None" and preset in self.presets:
+            preset_info = self.presets[preset]
             self.extension_input.setCurrentText(preset_info.get("extension", ""))
             self.resolution_input.setText(preset_info.get("resolution", ""))
             self.fps_input.setText(preset_info.get("fps", ""))
