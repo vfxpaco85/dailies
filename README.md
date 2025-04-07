@@ -6,9 +6,9 @@ The **Dailies Tool** is designed for VFX, animation, and film production to help
 - **Converting between image sequence formats** (e.g., EXR to JPG).
 - **Downscaling image resolutions** for easier review or delivery.
 
-Users can also input metadata related to the video, select render settings, and leverage various external video engines like **FFmpeg**, **Nuke**, and **RV** to perform the processing.
+Users can also input project and artist information, select render settings, and leverage various external video engines like **FFmpeg**, **Nuke**, and **RV** to perform the processing.
 
-This tool is primarily intended for creating dailies, but can be adapted to other use cases where image sequences need to be processed and video files need to be generated.
+This tool is primarily intended for creating dailies and submitting into a tracking software (**Shotgun**, **Ftrack**, **Kitsu**, and **Flow**), but can be adapted to other use cases where image sequences or videos need to be processed and media files need to be generated. It is essentially a wrapper around **FFmpeg**, **Nuke**, and **RV**.
 
 ## Features
 
