@@ -15,21 +15,44 @@ NUKE_FRAME_PADDING_FORMAT = "###"
 # Slate settings
 FFMPEG_FONT_SIZE = 18
 FFMPEG_SPACING_SIZE = 8
-FFMPEG_FONT_PATH =  "/Windows/Fonts/arial.ttf"
+FFMPEG_FONT_PATH = "/Windows/Fonts/arial.ttf"
 
 # Supported file types by engine
 SUPPORTED_FILE_TYPES = {
     "nuke": [
-        "cin", "dpx", "exr", "gif", "hdr", "jpeg", "mov", "mxf", "pic", "png", 
-        "sgi", "targa", "tiff", "xpm", "yuv"
+        "cin",
+        "dpx",
+        "exr",
+        "gif",
+        "hdr",
+        "jpeg",
+        "mov",
+        "mxf",
+        "pic",
+        "png",
+        "sgi",
+        "targa",
+        "tiff",
+        "xpm",
+        "yuv",
     ],
     "ffmpeg": [
-        "dpx", "exr", "gif", "hdr", "jpeg", "mov", "mxf", "png", "sgi", "targa", 
-        "tiff", "xpm", "yuv"
+        "dpx",
+        "exr",
+        "gif",
+        "hdr",
+        "jpeg",
+        "mov",
+        "mp4",
+        "mxf",
+        "png",
+        "sgi",
+        "targa",
+        "tiff",
+        "xpm",
+        "yuv",
     ],
-    "rvio": [
-        "cin", "dpx", "exr", "tiff", "mov", "jpeg2000", "png", "targa"
-    ],
+    "rvio": ["cin", "dpx", "exr", "tiff", "mov", "jpeg2000", "png", "targa"],
 }
 
 # Format and codec mappings
@@ -42,8 +65,8 @@ FORMAT_CODECS = {
         "jpeg": ("mjpeg", "mjpeg"),
         "jpeg2000": ("jpeg2000", "jpeg2000"),
         "mov": ("libx264", "yuv420p"),
-        "mxf": ("dnxhd", "yuv422p"),
         "mp4": ("libx264", "yuv420p"),
+        "mxf": ("dnxhd", "yuv422p"),
         "png": ("png", "png"),
         "sgi": ("sgi", "rawvideo"),
         "targa": ("tga", "rawvideo"),
@@ -61,7 +84,5 @@ FORMAT_CODECS = {
         "jpeg2000": "jpeg2000",
         "png": "png",
         "targa": "tga",
-    }
+    },
 }
-
-
