@@ -235,9 +235,9 @@ class DailiesUI(QWidget):
 
     def _browse_file_output(self):
         """Opens a file dialog for selecting an output file and sets the path."""
-        self._browse_file(
-            "Select Output File", "All Files (*)", self.output_path.setText
-        )
+        file_path, _ = QFileDialog.getSaveFileName(self, "Select Output File", "", "All Files (*)")
+        if file_path:
+            self.output_path.setText(file_path.replace("\\", "/"))
 
     def _browse_file_nuke_template(self):
         """Opens a file dialog for selecting a Nuke template and sets the path."""
