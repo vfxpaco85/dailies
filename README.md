@@ -39,12 +39,32 @@ The following external software must be installed separately. Ensure that these 
 - **RV**: RV is also proprietary software. Install it from [RV Downloads](https://www.foundry.com/products/rv)
   - Ensure the `rv` executable is added to your system's `PATH`.
 
-### 3. **Modify `constants.py`**:
-The `constants.py` file contains essential configuration information, including API URLs and authentication tokens for the tracking software. You must update the following fields accordingly:
+### 3. **Modify `constants.tracking.py` Module **:
+The `dailies.constants.tracking.py` file contains essential configuration information for the tracking software. You must update the following fields accordingly:
 
 - **Tracking Software Configuration**: Specify the tracking engine you wish to use (e.g., **Shotgun**, **Ftrack**, **Kitsu**, **Flow**) by setting the `TRACKING_ENGINE` variable.
 - **API URLs**: Update the API URLs for the tracking systems in the `API_URLS` dictionary.
-- **API Token**: Ensure the `API_TOKEN` and `PROJECT_ID` are set with the correct values to authenticate with your chosen tracking software.
+- **API Token**: Ensure the `TRACKING_API_TOKEN` is set with the correct values to authenticate with your chosen tracking software.
+- **API User**: Ensure the `TRACKING_LOGIN_USER` set with the correct values to authenticate with your chosen tracking software.
 
 ### 4. **Ensure Correct Path Configuration**:
 Make sure that the paths to the executables for **FFmpeg**, **Nuke**, and **RV** are correctly set in your system's environment variables so that they can be accessed from anywhere.
+
+### 5. **Ensure Correct PYTHON_PATH Configuration:**
+To ensure that the tool can access necessary modules and resources, you need to set the correct path for your project directory in the `PYTHON_PATH` environment variable.
+
+You can add the project directory to your `PYTHON_PATH` by running the following command:
+
+#### On Linux/macOS:
+
+```bash
+export PYTHONPATH=$(pwd):$PYTHONPATH
+```
+
+#### On Windows:
+
+```bash
+set PYTHONPATH=%cd%;%PYTHONPATH%
+```
+
+Alternatively, you can add this line to your shell configuration file (e.g., `.bashrc`, `.zshrc`, or `.bash_profile` on macOS/Linux) or system environment variables on Windows for persistent access.
