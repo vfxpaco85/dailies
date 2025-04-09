@@ -59,4 +59,7 @@ def get_package_root_directory():
     Returns:
         str: The root directory path of the package, one level up from the 'dailies' directory.
     """
-    return os.path.join(os.getcwd()[: os.getcwd().rfind("dailies")])
+    # Get the directory containing the current file
+    constant_directory_path = os.path.dirname(__file__)
+    # Find the 'dailies' directory and go one level up
+    return os.path.join(util_file_path[:util_file_path.rfind("dailies")])
