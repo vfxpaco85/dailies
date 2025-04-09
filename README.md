@@ -36,7 +36,7 @@ The following external software must be installed separately. Ensure that these 
 - **Nuke**: Nuke is a proprietary software. Please download and install it from the official website: [Nuke Downloads](https://www.foundry.com/products/nuke)
   - Ensure that the `nuke` executable and Python bindings are available and accessible from your environment.
 
-- **RV**: RV is also proprietary software. Install it from [RV Downloads](https://www.foundry.com/products/rv)
+- **RV**: RV is also proprietary software. Install it from [RV Downloads](https://www.autodesk.com/products/flow-production-tracking/rv)
   - Ensure the `rv` executable is added to your system's `PATH`.
 
 ### 3. **Modify Tracking Constant Module **:
