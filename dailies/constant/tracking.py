@@ -16,7 +16,7 @@ logging.basicConfig(
     ]
 )
 
-# Choose the tracking engine (e.g., 'shotgun', 'ftrack', 'kitsu', 'flow')
+# Choose the tracking engine (e.g., 'shotgun', 'ftrack', 'kitsu')
 TRACKING_ENGINE = os.getenv("TRACKING_ENGINE", "shotgun")  # Default to 'shotgun' if not set in environment
 
 # Tracking credentials
@@ -35,7 +35,6 @@ API_URLS = {
     "shotgun": "https://your-shotgun-instance.com/api/v1",
     "ftrack": "https://your-ftrack-instance.com/api/v1",
     "kitsu": "https://your-kitsu-instance.com/api/v1",
-    "flow": "https://your-flow-instance.com/api/v1",
 }
 
 # Dictionary to map tracking software names to their respective class names
@@ -43,7 +42,6 @@ TRACKING_SOFTWARE_CLASSES = {
     "shotgun": "dailies.tracking.shotgun_tracking.ShotgunTracking",
     "ftrack": "dailies.tracking.ftrack_tracking.FtrackTracking",
     "kitsu": "dailies.tracking.kitsu_tracking.KitsuTracking",
-    "flow": "dailies.tracking.flow_tracking.FlowTracking",
 }
 
 # Log the chosen tracking engine and its corresponding API URL
