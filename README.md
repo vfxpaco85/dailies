@@ -8,7 +8,7 @@ The **Dailies Tool** is designed for VFX, animation, and film production to help
 
 Users can also input project and artist information, select render settings, and leverage various external video engines like **FFmpeg**, **Nuke**, and **RV** to perform the processing.
 
-This tool is primarily intended for creating dailies and submitting into a tracking software (**Shotgun**, **Ftrack**, **Kitsu**, and **Flow**), but can be adapted to other use cases where image sequences or videos need to be processed and media files need to be generated. It is essentially a wrapper around **FFmpeg**, **Nuke**, and **RV**.
+This tool is primarily intended for creating dailies and submitting into a tracking software (**Shotgun**, **Ftrack**, and **Kitsu**), but can be adapted to other use cases where image sequences or videos need to be processed and media files need to be generated. It is essentially a wrapper around **FFmpeg**, **Nuke**, and **RV**.
 
 ## Features
 
@@ -16,7 +16,7 @@ This tool is primarily intended for creating dailies and submitting into a track
 - **Image Sequence Conversion**: Convert between different image sequence formats (e.g., EXR to JPG, etc.).
 - **Resolution Adjustment**: Downscale or upscale the resolution of image sequences or videos.
 - **Slate Generation**: Optionally add a slate (metadata overlay) to videos or image sequences, with customizable fields like project name, artist, version, etc.
-- **Tracking Software Integration**: Automatically integrate with tracking software like **Shotgun**, **Ftrack**, **Kitsu**, and **Flow** for version management.
+- **Tracking Software Integration**: Automatically integrate with tracking software like **Shotgun**, **Ftrack**, and **Kitsu** for version management.
 
 ## Installation Instructions
 
@@ -42,7 +42,7 @@ The following external software must be installed separately. Ensure that these 
 ### 3. **Modify Tracking Constant Module **:
 The `dailies.constant.tracking.py` file contains essential configuration information for the tracking software. You must update the following fields accordingly:
 
-- **Tracking Software Configuration**: Specify the tracking engine you wish to use (e.g., **Shotgun**, **Ftrack**, **Kitsu**, **Flow**) by setting the `TRACKING_ENGINE` variable.
+- **Tracking Software Configuration**: Specify the tracking engine you wish to use (e.g., **Shotgun**, **Ftrack**, **Kitsu**) by setting the `TRACKING_ENGINE` variable.
 - **API URLs**: Update the API URLs for the tracking systems in the `API_URLS` dictionary.
 - **API Token**: Ensure the `TRACKING_API_TOKEN` is set with the correct values to authenticate with your chosen tracking software.
 - **API User**: Ensure the `TRACKING_LOGIN_USER` set with the correct values to authenticate with your chosen tracking software.
