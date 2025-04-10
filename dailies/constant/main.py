@@ -26,15 +26,14 @@ DEFAULT_TMP_DIRECTORY = get_daily_tmp_directory(BASE_TMP_DIRECTORY)
 ENV_VAR_CONFIG = {
     "path": "VIDEO_PATH",             # The path to the video file
     "version": "VERSION_NAME",        # The version name of the media
-    "link": "LINK_NAME",              # The entity name of the media
     "description": "DESCRIPTION",     # A description of the media or task
-    "artist": "ARTIST",               # The artist responsible for the work
-    "task": "TASK",                   # The task or job associated with the media
     "project": "PROJECT",             # The project name
     "project_id": "PROJECT_ID",       # The unique ID for the project
     "entity_name": "ENTITY_NAME",     # The name of the entity (e.g., shot, asset, etc.)
     "entity_id": "ENTITY_ID",         # The unique ID for the entity
     "entity_type": "ENTITY_TYPE",     # The type of entity (e.g., shot, asset)
+    "task_name": "TASK_NAME",         # The name of the task
+    "task_id": "TASK_ID",             # The unigque ID for the task
     "artist_name": "ARTIST_NAME",     # The name of the artist
     "artist_id": "ARTIST_ID",         # The unique ID for the artist
 }
