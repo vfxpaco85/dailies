@@ -62,4 +62,4 @@ def get_package_root_directory():
     # Get the directory containing the current file
     constant_directory_path = os.path.dirname(__file__)
     # Find the 'dailies' directory and go one level up
-    return os.path.join(util_file_path[:util_file_path.rfind("dailies")])
+    return os.path.join(constant_directory_path[:constant_directory_path.rfind("dailies")])
