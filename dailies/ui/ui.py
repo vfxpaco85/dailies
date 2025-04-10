@@ -623,12 +623,12 @@ class DailiesUI(QWidget):
             environment (Environment): An instance of the Environment class that contains
                                         the data to prefill in the form fields.
         """
-        if environment.artist:
-            self.artist_input.setText(environment.artist)
-        if environment.link:
-            self.link_input.setText(environment.link)
-        if environment.task:
-            self.task_input.setText(environment.task)
+        if environment.artist_name:
+            self.artist_input.setText(environment.artist_name)
+        if environment.entity_name:
+            self.link_input.setText(environment.entity_name)
+        if environment.task_name:
+            self.task_input.setText(environment.task_name)
         if environment.project_name:
             self.project_input.setText(environment.project_name)
 
