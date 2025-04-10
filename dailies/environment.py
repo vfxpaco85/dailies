@@ -186,7 +186,7 @@ if __name__ == "__main__":
         project_name="pipeline_test",
         entity_name="MR_LGP_01_0320",
         task_name="fx",
-        artist_name="Paco Ramos Koch",
+        artist_name="User",
     )
 
     # Log the environment configuration
