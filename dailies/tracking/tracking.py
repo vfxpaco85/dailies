@@ -6,7 +6,7 @@ from dailies.constant.tracking import (
     API_URLS,
     TRACKING_ENGINE,
     TRACKING_API_TOKEN,
-    TRACKING_LOGIN_USER,
+    TRACKING_LOGIN_USR,
 )
 from dailies.environment import Environment
 
@@ -15,10 +15,10 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 logging.basicConfig(
-    level=logging.INFO,  # Set the default logger level to INFO
+    level=logging.INFO,
     format=LOG_FORMAT,
     handlers=[
-        logging.StreamHandler(),  # Log to the console
+        logging.StreamHandler(),
         LOG_FILE_PATH,
     ],
 )
@@ -31,7 +31,7 @@ if not TRACKING_ENGINE or TRACKING_ENGINE not in API_URLS:
     exit(1)
 
 # Log warnings if credentials are missing or using default values
-if not TRACKING_LOGIN_USER or TRACKING_LOGIN_USER == "USR":
+if not TRACKING_LOGIN_USR or TRACKING_LOGIN_USR == "USR":
     logging.error(
         "Tracking username is missing or invalid. Please set 'TRACKING_LOGIN_USER' in the environment variables."
     )
@@ -62,10 +62,15 @@ class TrackingSoftware(ABC):
         self.environment = environment
         self.api_url = API_URLS.get(TRACKING_ENGINE)
         self.api_token = TRACKING_API_TOKEN
+        self.project_name = self.environment.project_name
         self.project_id = self.environment.fetch_project_id()
         self.entity_name = self.environment.entity_name
         self.entity_id = self.environment.fetch_entity_id()
         self.entity_type = self.environment.entity_type
+        self.task_name = self.environment.task_name
+        self.task_id = self.environment.fetch_task_id()
+        self.artist_name = self.environment.artist_name
+        self.artist_id = self.environment.fetch_artist_id()
 
     def _get_headers(self):
         """
@@ -77,16 +82,6 @@ class TrackingSoftware(ABC):
             "Authorization": f"Bearer {self.api_token}",
             "Content-Type": "application/json",
         }
-
-    @abstractmethod
-    def insert_version(self, version_number, video_path):
-        """
-        Inserts a version into the tracking system.
-
-        :param version_number: The version number to be created.
-        :param video_path: The path to the video file to be uploaded.
-        """
-        pass
 
     @abstractmethod
     def get_project_id(self, project_name):
@@ -106,5 +101,36 @@ class TrackingSoftware(ABC):
         :param entity_name: The entity name to search for.
         :param entity_type: The entity type to use (defaults to the one in the environment).
         :return: The entity ID, or None if not found.
+        """
+        pass
+
+    @abstractmethod
+    def get_task_id(self, entity_id, task_name):
+        """
+        Retrieves the task ID for a given entity and task type name.
+
+        :param entity_id: The entity ID (e.g., shot, asset, sequence).
+        :param task_name: The name of the task type.
+        :return: The task ID, or None if not found.
+        """
+        pass
+
+    @abstractmethod
+    def get_artist_id(self, artist_name):
+        """
+        Retrieves the artist ID based on the artist's name.
+
+        :param artist_name: The full name of the artist.
+        :return: The artist ID, or None if not found.
+        """
+        pass
+
+    @abstractmethod
+    def insert_version(self, version_name, video_path):
+        """
+        Inserts a version into the tracking system.
+
+        :param version_name: The version name to be created.
+        :param video_path: The path to the video file to be uploaded.
         """
         pass

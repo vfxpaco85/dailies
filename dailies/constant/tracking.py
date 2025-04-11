@@ -21,12 +21,15 @@ TRACKING_ENGINE = os.getenv("TRACKING_ENGINE", "shotgun")  # Default to 'shotgun
 
 # Tracking credentials
 # If not set via environment variables, fallback to default values
-TRACKING_LOGIN_USER = os.getenv("TRACKING_LOGIN_USER", "USR")  # Set via environment or change here
+TRACKING_LOGIN_USER = os.getenv("TRACKING_LOGIN_USR", "USR")  # Set via environment or change here
+TRACKING_LOGIN_PWD = os.getenv("TRACKING_LOGIN_PWD", "PWD")  # Set via environment or change here
 TRACKING_API_TOKEN = os.getenv("TRACKING_API_TOKEN", "PWD")  # Set via environment or change here
 
 # Log warnings if credentials are missing or using default values
-if TRACKING_LOGIN_USER == "USR":
+if TRACKING_LOGIN_USR == "USR":
     logger.warning("Tracking username is not set or is using the default value: 'USR'. Please set 'TRACKING_LOGIN_USER' in your environment variables.")
+if TRACKING_LOGIN_PWD == "PWD":
+    logger.warning("Tracking password is not set or is using the default value: 'PWD'. Please set 'TRACKING_LOGIN_PWD' in your environment variables.")
 if TRACKING_API_TOKEN == "PWD":
     logger.warning("Tracking API token is not set or is using the default value: 'PWD'. Please set 'TRACKING_API_TOKEN' in your environment variables.")
 
