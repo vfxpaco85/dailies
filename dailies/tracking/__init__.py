@@ -4,7 +4,7 @@ from .kitsu_tracking import KitsuTracking
 
 # If you want to create a list of all engines for convenience
 __all__ = [
-    'ShotgunTracking',
-    'FtrackTracking',
-    'KitsuTracking',
+    "ShotgunTracking",
+    "FtrackTracking",
+    "KitsuTracking",
 ]

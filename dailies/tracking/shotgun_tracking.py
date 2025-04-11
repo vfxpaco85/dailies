@@ -21,6 +21,7 @@ logging.basicConfig(
 # Try importing shotgun_api3 and set availability flag
 try:
     import shotgun_api3
+
     SHOTGUN_API_AVAILABLE = True
 except ImportError as e:
     SHOTGUN_API_AVAILABLE = False
@@ -167,30 +168,39 @@ class ShotgunTracking(TrackingSoftware):
                 "code": version_name,
                 "entity": {"type": self.entity_type, "id": self.entity_id},
                 "sg_uploaded_movie": video_path,
-                "sg_task": {"type": "Task", "id": self.get_task_id(self.entity_id, "Render")},  # Example task type
+                "sg_task": {
+                    "type": "Task",
+                    "id": self.get_task_id(self.entity_id, "Render"),
+                },  # Example task type
                 "sg_status_list": "rev",  # This status may vary
             }
 
             # Create the version entry
             self.sg.create("Version", data)
             logging.info(f"Version '{version_name}' inserted into Shotgun.")
-            
+
             # Add comment
-            self.sg.create("Note", {
-                "content": comment,
-                "entity": {"type": self.entity_type, "id": self.entity_id},
-                "project": {"type": "Project", "id": self.project_id},
-            })
+            self.sg.create(
+                "Note",
+                {
+                    "content": comment,
+                    "entity": {"type": self.entity_type, "id": self.entity_id},
+                    "project": {"type": "Project", "id": self.project_id},
+                },
+            )
             logging.info(f"Added comment: '{comment}'")
 
         except Exception as e:
             logging.error(f"Error inserting version into Shotgun: {e}")
 
+
 def main():
     """
     Main function to test the ShotgunTracking class.
     """
-    environment = Environment(project_name="pipeline_test", entity_name="MyAsset", task_name="render")
+    environment = Environment(
+        project_name="pipeline_test", entity_name="MyAsset", task_name="render"
+    )
     shotgun_tracker = ShotgunTracking(environment)
 
     # Test fetching project ID
@@ -213,6 +223,7 @@ def main():
     video_path = "/path/to/your/video.mov"  # Replace with an actual video path
     comment = "Initial version"
     shotgun_tracker.insert_version(version_name, video_path, comment)
+
 
 if __name__ == "__main__":
     main()

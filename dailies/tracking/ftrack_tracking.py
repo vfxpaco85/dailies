@@ -20,10 +20,12 @@ logging.basicConfig(
 # Try importing ftrack_api and set availability flag
 try:
     import ftrack_api
+
     FTRACK_API_AVAILABLE = True
 except ImportError as e:
     FTRACK_API_AVAILABLE = False
     logging.error(f"Failed to import ftrack_api module: {e}")
+
 
 class FtrackTracking(TrackingSoftware):
     """
@@ -61,7 +63,7 @@ class FtrackTracking(TrackingSoftware):
             if not self.session:
                 logging.error("Ftrack API session is not available.")
                 return None
-            
+
             project = self.session.query(
                 f"select * from Project where name='{project_name}'"
             ).one()
@@ -221,6 +223,7 @@ def main():
     video_path = "/path/to/video/file.mov"  # Replace with an actual video file path
     comment = "Initial version"
     ftrack_tracker.insert_version(version_name, video_path, comment)
+
 
 if __name__ == "__main__":
     main()
