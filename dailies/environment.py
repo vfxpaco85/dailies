@@ -74,12 +74,20 @@ class Environment:
         # Auto-fetch IDs if not set
         if not self.project_id and self.project_name:
             self.project_id = self.fetch_project_id()
-        if not self.entity_id and self.entity_name:
+            if not self.tracking_software.project_id:
+                self.tracking_software.project_id = self.project_id
+        if not self.entity_id and self.entity_name and self.entity_type:
             self.entity_id = self.fetch_entity_id()
+            if not self.tracking_software.entity_id:
+                self.tracking_software.entity_id = self.project_id
         if not self.task_id and self.entity_name:
             self.task_id = self.fetch_task_id()
+            if not self.tracking_software.task_id:
+                self.tracking_software.task_id = self.task_id
         if not self.artist_id and self.artist_name:
             self.artist_id = self.fetch_artist_id()
+            if not self.tracking_software.artist_id:
+                self.tracking_software.artist_id = self.artist_id
 
     @property
     def tracking_software(self):
@@ -115,7 +123,6 @@ class Environment:
         """
         if not self.project_id and self.project_name:
             self.project_id = self.tracking_software.get_project_id(self.project_name)
-            self.tracking_software.project_id = self.project_id
         return self.project_id
 
     def fetch_entity_id(self):
