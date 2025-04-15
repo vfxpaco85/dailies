@@ -25,22 +25,25 @@ class Environment:
 
     Attributes:
         project_name (str): The name of the project.
-        entity_name (str): The name of the entity (e.g., shot, sequence).
+        entity_name (str): The name of the entity (e.g., shot, sequence, asset).
+        entity_type (str): The type of the entity (e.g., "sequence", "shot", "asset").
         task_name (str): The name of the task (e.g., "Modeling", "Animation").
         artist_name (str): The name of the artist associated with the task.
         project_id (str or None): The project ID, or None if not provided.
         entity_id (str or None): The entity ID, or None if not provided.
-        entity_type (str): The type of the entity (e.g., "Shot"). Defaults to "Shot".
         task_id (str or None): The task ID, or None if not provided.
         artist_id (str or None): The artist ID, or None if not provided.
         _tracking_software (TrackingSoftware or None): An instance of the tracking software,
                                                       created using the factory when needed.
     """
 
+    VALID_ENTITY_TYPES = {"shot", "sequence", "asset"}
+
     def __init__(
         self,
         project_name: str = None,
         entity_name: str = None,
+        entity_type: str = None,
         task_name: str = None,
         artist_name: str = None,
     ):
@@ -50,11 +53,10 @@ class Environment:
 
         :param project_name: Optional project name to override environment variable.
         :param entity_name: Optional entity name to override environment variable.
+        :param entity_type: Optional entity type ("shot", "sequence", "asset").
         :param task_name: Optional task name to override environment variable.
         :param artist_name: Optional artist name to override environment variable.
         """
-        # Initialize all variables from ENV_VAR_CONFIG
-        # Allow constructor overrides for project/entity/task/artist name
         self.project_name = project_name or os.getenv(ENV_VAR_CONFIG["project"])
         self.entity_name = entity_name or os.getenv(ENV_VAR_CONFIG["entity_name"])
         self.task_name = task_name or os.getenv(ENV_VAR_CONFIG["task_name"])
@@ -62,13 +64,20 @@ class Environment:
 
         self.project_id = os.getenv(ENV_VAR_CONFIG["project_id"])
         self.entity_id = os.getenv(ENV_VAR_CONFIG["entity_id"])
-        self.entity_type = os.getenv(
-            ENV_VAR_CONFIG["entity_type"], "Shot"
-        )  # Default to Shot
+        self.entity_type = (
+            entity_type or os.getenv(ENV_VAR_CONFIG["entity_type"], "shot")
+        ).lower()
+
+        if self.entity_type not in self.VALID_ENTITY_TYPES:
+            raise ValueError(
+                f"Invalid entity_type '{self.entity_type}'. Must be one of: "
+                f"{', '.join(self.VALID_ENTITY_TYPES)}"
+            )
+
         self.task_id = os.getenv(ENV_VAR_CONFIG["task_id"])
         self.artist_id = os.getenv(ENV_VAR_CONFIG["artist_id"])
 
-        # Set to None because the tracking_software is lazily initialized.
+        # Lazy-loaded tracking software
         self._tracking_software = None
 
         # Auto-fetch IDs if not set
@@ -76,14 +85,17 @@ class Environment:
             self.project_id = self.fetch_project_id()
             if not self.tracking_software.project_id:
                 self.tracking_software.project_id = self.project_id
+
         if not self.entity_id and self.entity_name and self.entity_type:
             self.entity_id = self.fetch_entity_id()
             if not self.tracking_software.entity_id:
-                self.tracking_software.entity_id = self.project_id
+                self.tracking_software.entity_id = self.entity_id
+
         if not self.task_id and self.entity_name:
             self.task_id = self.fetch_task_id()
             if not self.tracking_software.task_id:
                 self.tracking_software.task_id = self.task_id
+
         if not self.artist_id and self.artist_name:
             self.artist_id = self.fetch_artist_id()
             if not self.tracking_software.artist_id:
@@ -116,8 +128,7 @@ class Environment:
 
     def fetch_project_id(self):
         """
-        Retrieves the project ID from the tracking software if it is not already set.
-        The ID is fetched by the project name if necessary.
+        Retrieves the project ID from the tracking software.
 
         :return: The project ID, or None if not available.
         """
@@ -127,8 +138,8 @@ class Environment:
 
     def fetch_entity_id(self):
         """
-        Retrieves the entity ID (e.g., for a shot, asset, or sequence) from the tracking software
-        if it is not already set. The ID is fetched based on the entity name and type if necessary.
+        Retrieves the entity ID (shot, asset, or sequence) from the tracking software
+        if it is not already set.
 
         :return: The entity ID, or None if not available.
         """
@@ -141,7 +152,6 @@ class Environment:
     def fetch_task_id(self):
         """
         Retrieves the task ID based on the task name and project ID from the tracking software.
-        The ID is fetched if it is not already set.
 
         :return: The task ID, or None if not available.
         """
@@ -154,7 +164,6 @@ class Environment:
     def fetch_artist_id(self):
         """
         Retrieves the artist ID based on the artist name from the tracking software.
-        The ID is fetched if it is not already set.
 
         :return: The artist ID, or None if not available.
         """
@@ -165,14 +174,7 @@ class Environment:
     def log_configuration(self):
         """
         Logs the current environment configuration using the logging module.
-        This includes all project, entity, task, and artist information.
-
-        Logs the following:
-            - Project Name and ID
-            - Entity Name and ID
-            - Entity Type
-            - Task Name and ID
-            - Artist Name and ID
+        Includes all project, entity, task, and artist information.
         """
         logger.info("Environment Configuration:")
         logger.info(f"Project Name: {self.project_name}")
@@ -192,6 +194,7 @@ if __name__ == "__main__":
     env = Environment(
         project_name="pipeline_test",
         entity_name="MR_LGP_01_0320",
+        entity_type="shot",
         task_name="fx",
         artist_name="User",
     )
