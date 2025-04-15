@@ -72,11 +72,14 @@ class TrackingSoftwareFactory:
     """
 
     @staticmethod
-    def get_tracking_software(tracking_software_name: str):
+    def get_tracking_software(
+        tracking_software_name: str, environment: Environment = None
+    ):
         """
         Factory method to return the appropriate tracking software instance.
 
-        :param tracking_software_name: Name of the tracking software (e.g., "shotgun", "ftrack", "kitsu", "flow", or potentially more)
+        :param tracking_software_name: Name of the tracking software (e.g., "shotgun", "ftrack", "kitsu", or more).
+        :param environment: An optional Environment object. If not provided, a new one will be created.
         :return: An instance of the correct tracking software.
         """
         logger.info(f"Requesting tracking software for: {tracking_software_name}")
@@ -89,7 +92,6 @@ class TrackingSoftwareFactory:
 
         # Dynamically import the module that contains the tracking software class
         try:
-            # Attempt to split the full class path into module and class
             if "." not in tracking_class_name:
                 logger.error(
                     f"Invalid tracking software class name: {tracking_class_name}. Expected 'module.class' format."
@@ -108,12 +110,11 @@ class TrackingSoftwareFactory:
             logger.error(f"Error importing class {tracking_class_name}: {e}")
             raise ValueError(f"Error importing class {tracking_class_name}: {e}")
 
-        # Initialize the Environment object and return the tracking software instance
-        env = Environment()
+        # Use provided Environment or create one
+        env = environment or Environment()
+
         logger.info(f"Returning instance of {tracking_class_name} with Environment")
-        return tracking_class(
-            env
-        )  # Create and return an instance of the tracking software
+        return tracking_class(env)
 
 
 # Example usage
