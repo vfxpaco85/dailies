@@ -29,6 +29,7 @@ from dailies.constant.main import (
 )
 from dailies.constant.engine import SUPPORTED_FILE_TYPES, IMAGE_SEQUENCES_FILE_TYPES
 from dailies.constant.tracking import TRACKING_ENGINE
+from dailies.environment import Environment
 from dailies.factory import VideoEngineFactory, TrackingSoftwareFactory
 from dailies.preset import load_presets_from_folder
 
@@ -66,6 +67,7 @@ class DailiesUI(QWidget):
 
         self._is_error = False
         self.presets = presets
+        self.environment = environment
 
         if environment:
             self.prefill_form(environment)
@@ -301,13 +303,48 @@ class DailiesUI(QWidget):
             Exception: If an error occurs during version insertion, an exception will be logged
                       and the error is shown to the user.
         """
-        tracking = TrackingSoftwareFactory.get_tracking_software(TRACKING_ENGINE)
+        tracking = TrackingSoftwareFactory.get_tracking_software(
+            TRACKING_ENGINE, self._get_environment()
+        )
         try:
-            tracking.insert_version(version, output_path)
+            tracking.insert_version(
+                version, output_path, self.description_input.toPlainText()
+            )
         except Exception as e:
             logger.error(f"Error during version creation: {e}")
             self._show_error("Tracking Error", f"{e}")
             self._is_error = True
+
+    def _get_environment(self):
+        """
+        Ensures a valid Environment instance exists by checking required fields.
+        If any are missing, it re-creates the Environment using the UI values.
+
+        Returns:
+            Environment or None: A fully initialized Environment object or None on error.
+        """
+        if (
+            not self.environment
+            or not self.environment.project_name
+            or not self.environment.entity_name
+            or not self.environment.task_name
+            or not self.environment.artist_name
+        ):
+            try:
+                self.environment = Environment(
+                    project_name=self.project_input.text(),
+                    entity_name=self.link_input.text(),
+                    task_name=self.task_input.text(),
+                    artist_name=self.artist_input.text(),
+                )
+                self.environment.log_configuration()
+            except Exception as e:
+                logger.error(f"Failed to initialize environment: {e}")
+                self._show_error("Environment Error", str(e))
+                self._is_error = True
+                return None
+
+        return self.environment
 
     def _get_image_sequence_file_path(self, file_path):
         """
