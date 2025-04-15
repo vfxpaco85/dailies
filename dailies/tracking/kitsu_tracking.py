@@ -45,14 +45,14 @@ class KitsuTracking(TrackingSoftware):
         :param environment: The environment instance that contains project and entity details.
         """
         super().__init__(environment)
+        self.session = None
 
         if not GAZU_AVAILABLE:
             logging.error("Gazu module is not available.")
-            self.session = None
             return
 
         try:
-            # Log in and assign the session
+            gazu.client.set_host(API_URLS.get(TRACKING_ENGINE))
             self.session = gazu.log_in(TRACKING_LOGIN_USR, TRACKING_LOGIN_PWD)
             if self.session:
                 logging.info("Logged into Kitsu via gazu.")
@@ -61,6 +61,20 @@ class KitsuTracking(TrackingSoftware):
         except Exception as e:
             logging.error(f"Failed to login to Kitsu with gazu: {e}")
 
+    def _validate(self):
+        """
+        Validates that the gazu module is available and a session has been established.
+
+        :return: True if both conditions are met, False otherwise.
+        """
+        if not GAZU_AVAILABLE:
+            logging.error("Gazu module is not available.")
+            return False
+        if not self.session:
+            logging.error("Session not available. Please login first.")
+            return False
+        return True
+
     def get_project_id(self, project_name):
         """
         Retrieves the project ID based on the project name from Kitsu.
@@ -68,12 +82,7 @@ class KitsuTracking(TrackingSoftware):
         :param project_name: The project name to search for.
         :return: The project ID, or None if not found.
         """
-        if not GAZU_AVAILABLE:
-            logging.error("Gazu module is not available.")
-            return None
-
-        if not self.session:
-            logging.error("Session not available. Please login first.")
+        if not self._validate():
             return None
 
         try:
@@ -95,12 +104,7 @@ class KitsuTracking(TrackingSoftware):
         :param entity_type: "Shot", "Asset", or "Sequence"
         :return: The entity ID, or None if not found.
         """
-        if not GAZU_AVAILABLE:
-            logging.error("Gazu module is not available.")
-            return None
-
-        if not self.session:
-            logging.error("Session not available. Please login first.")
+        if not self._validate():
             return None
 
         try:
@@ -137,37 +141,25 @@ class KitsuTracking(TrackingSoftware):
         :param task_name: The task type name (e.g., "Animation", "Lighting").
         :return: The task ID, or None if not found.
         """
-        if not GAZU_AVAILABLE:
-            logging.error("Gazu module is not available.")
-            return None
-
-        if not self.session:
-            logging.error("Session not available. Please login first.")
+        if not self._validate():
             return None
 
         try:
-            # Fetch the task type by name
             task_type = gazu.task.get_task_type_by_name(task_name)
             if not task_type:
                 logging.error(f"Task type '{task_name}' not found.")
                 return None
 
-            task_type_id = task_type["id"]
-
-            # Fetch tasks for the given entity and task type
             tasks = gazu.task.all_tasks_for_entity_and_task_type(
-                entity_id, task_type_id
+                entity_id, task_type["id"]
             )
-
             if not tasks:
                 logging.warning(
                     f"No tasks found for entity {entity_id} with task type {task_name}."
                 )
                 return None
 
-            # Assuming only one task is returned, return the first task ID
             return tasks[0]["id"]
-
         except Exception as e:
             logging.error(f"Error fetching task ID: {e}")
             return None
@@ -179,22 +171,12 @@ class KitsuTracking(TrackingSoftware):
         :param artist_name: The name of the artist (person).
         :return: The artist ID, or None if not found.
         """
-        if not GAZU_AVAILABLE:
-            logging.error("Gazu module is not available.")
-            return None
-
-        if not self.session:
-            logging.error("Session not available. Please login first.")
+        if not self._validate():
             return None
 
         try:
-            # Get all people (artists)
             people = gazu.person.all_persons()
-
-            # Iterate over the people and find the artist by name
             for person in people:
-
-                # Check for exact match of name (case insensitive)
                 if person.get("full_name", "").lower() == artist_name.lower():
                     return person["id"]
 
@@ -207,58 +189,64 @@ class KitsuTracking(TrackingSoftware):
 
     def insert_version(self, version_name, video_path, comment):
         """
-        Creates a version (daily) for a shot and uploads a QuickTime preview to Kitsu.
+        Creates a version (daily) for a shot, sequence, or asset and uploads a QuickTime preview to Kitsu.
 
         :param version_name: The version name (e.g., "v001", "v002", etc.).
         :param video_path: The full path to the QuickTime file.
-        :param comment: A comment describing the version being uploaded (e.g., "Animation pass 1").
+        :param comment: A comment describing the version being uploaded.
         """
-        if not self.session:
-            logging.error("Session not available. Please login first.")
+        if not self._validate():
             return None
 
-        if not GAZU_AVAILABLE:
-            logging.error("Gazu module is not available.")
+        if not self.environment.entity_id and not self.environment.entity_name:
+            logging.error("Missing entity_name in environment.")
+            return None
+
+        if not self.environment.task_id and not self.environment.task_name:
+            logging.error("Missing task_name in environment.")
             return None
 
         try:
-            # Get project
             project = gazu.project.get_project(self.project_id)
 
-            # Get entity (e.g. shot)
-            entity = gazu.shot.get_shot(self.entity_id)
-
-            if not entity:
-                logging.error("Entity (shot) not found.")
+            if self.environment.entity_type == "shot":
+                entity = gazu.shot.get_shot(self.environment.entity_id)
+            elif self.environment.entity_type == "sequence":
+                entity = gazu.sequence.get_sequence(self.environment.entity_id)
+            elif self.environment.entity_type == "asset":
+                entity = gazu.asset.get_asset(self.environment.entity_id)
+            else:
+                logging.error(
+                    f"Unsupported entity type: {self.environment.entity_type}"
+                )
                 return None
 
-            # Get task type
+            if not entity:
+                logging.error(f"Entity ({self.environment.entity_type}) not found.")
+                return None
+
             task_type = gazu.task.get_task_type_by_name(self.environment.task_name)
             if not task_type:
                 logging.error(f"Task type '{self.environment.task_name}' not found.")
                 return None
 
-            # Get task
-            task_id = self.get_task_id(self.entity_id, task_type["name"])
-
+            task_id = self.get_task_id(self.environment.entity_id, task_type["name"])
             if not task_id:
-                logging.warning("No task found for this entity. Creating default one.")
-                task = gazu.task.new_task(self.entity_id, task_type)
-                task_id = task["id"]
+                logging.warning(
+                    f"No task found for {self.environment.entity_type}. Creating default one."
+                )
+                task = gazu.task.new_task(self.environment.entity_id, task_type)
+            else:
+                task = gazu.task.get_task(task_id)
 
-            # Ensure task_id is a string
-            task_id = str(task_id)
+            status = gazu.task.get_task_status(task["task_status_id"])
 
-            # Now create the preview
-            preview = gazu.task.create_preview(
-                task_id,  # Pass task_id (string) instead of task dict
-                comment,  # Pass the comment as string
-            )
+            file_string = f"\n\n<hr><b><u>FILE :</b></u><i>\n{str(video_path)}</i>\n"
+            gazu_comment = gazu.task.add_comment(task, status, comment + file_string)
 
-            logging.info(f"Created version {version_name} for task {task_id}")
+            preview = gazu.task.add_preview(task, gazu_comment, video_path)
 
-            # Upload preview file (ensure this method is correct for file upload)
-            gazu.files.upload_preview_file(preview, video_path)
+            logging.info(f"Created version {version_name} for task {task['id']}")
             logging.info(f"Uploaded QuickTime preview for version {version_name}")
 
         except Exception as e:
@@ -293,9 +281,16 @@ def main():
     logging.info(f"Artist ID for '{artist_name}': {artist_id}")
 
     # Test inserting a version (daily)
-    version_number = 1
+    environment = Environment(
+        project_name="pipeline_test",
+        entity_name="MR_LGP_01_0320",
+        entity_type="shot",
+        task_name="fx",
+    )
+    kitsu_tracker = KitsuTracking(environment)
+    version_name = "v001"
     video_path = "/path/to/video.mov"  # Update path here
-    kitsu_tracker.insert_version(version_number, video_path, "foobar")
+    kitsu_tracker.insert_version(version_name, video_path, "foobar")
 
 
 if __name__ == "__main__":
