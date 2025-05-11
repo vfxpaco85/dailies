@@ -1,5 +1,5 @@
 site_name: dailies
-site_url: TODO
+site_url: 
 repo_url: https://github.com/vfxpaco85/dailies
 repo_name: dailies
 edit_uri: edit/main/docs/
@@ -35,6 +35,6 @@ markdown_extensions:
   - pymdownx.highlight
 
 nav:
-  - Setup: setup_instruction.md
+  - Setup: setup_instructions.md
   - Troubleshooting: troubleshooting.md
   - User Guide: user_guide.md

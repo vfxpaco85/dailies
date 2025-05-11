@@ -71,8 +71,9 @@ set PYTHONPATH=%cd%;%PYTHONPATH%
 Alternatively, you can add this line to your shell configuration file (e.g., `.bashrc`, `.zshrc`, or `.bash_profile` on macOS/Linux) or system environment variables on Windows for persistent access.
 
 
-## Build the docs
+## Build the docs locally
 
 ```python
-pip install mkdocs
+pip install mkdocs mkdocs-material
+mkdocs serve
 ```
