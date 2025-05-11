@@ -25,7 +25,7 @@ This tool is primarily intended for creating dailies and submitting into a track
 To install the required Python packages for the application, run the following command:
 
 ```bash
-pip install -r requirements.txt
+pip install .
 ```
 
 ### 2. **Install External Software**:
