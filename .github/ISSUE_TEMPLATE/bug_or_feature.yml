@@ -1,0 +1,81 @@
+name: Bug Report / Feature Request
+description: Report a bug or suggest a new feature
+title: "[Bug/Feature] "
+labels: ["triage"]
+body:
+  - type: dropdown
+    id: issue_type
+    attributes:
+      label: Issue Type
+      description: What kind of issue are you reporting?
+      options:
+        - 🐞 Bug
+        - ✨ Feature Request
+      default: 0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How urgent is this issue?
+      options:
+        - 🟢 Low
+        - 🟡 Medium
+        - 🔴 High
+      default: 1
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: General Description
+      description: Clearly describe the issue or the feature you are suggesting.
+      placeholder: Describe the problem or idea in detail.
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        ## If this is a bug, please fill out the following section:
+
+  - type: textarea
+    id: reproduction_steps
+    attributes:
+      label: Steps to Reproduce (Bug only)
+      description: What steps cause the bug to appear? Leave "N/A" if this is not a bug.
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. Observe '...'
+      value: N/A
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        ## If this is a feature request, please describe your idea below:
+
+  - type: textarea
+    id: feature_details
+    attributes:
+      label: Feature Description (Feature Request only)
+      description: Describe the feature or enhancement you'd like to see. Leave "N/A" if this is not a feature request.
+      value: N/A
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional_info
+    attributes:
+      label: Additional Context or Screenshots
+      description: Include any logs, screenshots, or other helpful context.
+      placeholder: Drag and drop screenshots or paste logs here.
+    validations:
+      required: false
