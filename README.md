@@ -25,7 +25,7 @@ This tool is primarily intended for creating dailies and submitting into a track
 To install the required Python packages for the application, run the following command:
 
 ```bash
-pip install -r requirements.txt
+pip install .
 ```
 
 ### 2. **Install External Software**:
@@ -69,3 +69,11 @@ set PYTHONPATH=%cd%;%PYTHONPATH%
 ```
 
 Alternatively, you can add this line to your shell configuration file (e.g., `.bashrc`, `.zshrc`, or `.bash_profile` on macOS/Linux) or system environment variables on Windows for persistent access.
+
+
+## Build the docs locally
+
+```python
+pip install mkdocs mkdocs-material
+mkdocs serve
+```
