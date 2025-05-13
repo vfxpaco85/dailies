@@ -1,0 +1,40 @@
+site_name: dailies
+site_url: 
+repo_url: https://github.com/vfxpaco85/dailies
+repo_name: dailies
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - navigation.sections
+    - content.code.copy
+  palette:
+    - scheme: slate
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+    - scheme: default
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - footnotes
+  - meta
+  - toc:
+      permalink: true
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.emoji
+  - pymdownx.tasklist
+  - pymdownx.highlight
+
+nav:
+  - Setup: setup_instructions.md
+  - Troubleshooting: troubleshooting.md
+  - User Guide: user_guide.md
