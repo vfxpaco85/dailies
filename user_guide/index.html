@@ -1,0 +1,937 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../troubleshooting/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>User Guide - dailies</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#user-guide-for-dailies-tool-ui" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="dailies" class="md-header__button md-logo" aria-label="dailies" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            dailies
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              User Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/vfxpaco85/dailies" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dailies
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../setup_instructions/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Setup
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../troubleshooting/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Troubleshooting
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  User Guide
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="dailies" class="md-nav__button md-logo" aria-label="dailies" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    dailies
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/vfxpaco85/dailies" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dailies
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup_instructions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    User Guide
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    User Guide
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-input-fields-for-video-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Input Fields for Video Information
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-render-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Render Settings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-file-dialogs" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. File Dialogs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-submit-button" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Submit Button
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Started
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting Started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-launching-the-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Launching the Tool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-filling-out-the-form" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Filling Out the Form
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-choosing-render-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Choosing Render Settings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-submitting-the-form" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Submitting the Form
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-setting-up-the-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Setting Up the Logging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-creating-the-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Creating the UI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-handling-form-submission" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Handling Form Submission
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-input-fields-for-video-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Input Fields for Video Information
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-render-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Render Settings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-file-dialogs" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. File Dialogs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-submit-button" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Submit Button
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Started
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting Started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-launching-the-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Launching the Tool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-filling-out-the-form" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Filling Out the Form
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-choosing-render-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Choosing Render Settings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-submitting-the-form" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Submitting the Form
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-setting-up-the-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Setting Up the Logging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-creating-the-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Creating the UI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-handling-form-submission" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Handling Form Submission
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="user-guide-for-dailies-tool-ui">User Guide for Dailies Tool UI<a class="headerlink" href="#user-guide-for-dailies-tool-ui" title="Permanent link">&para;</a></h1>
+<p>The <strong>Dailies Tool</strong> UI provides an easy-to-use interface for entering project information, artist information and render settings. This guide will walk you through the features and how to interact with the tool.</p>
+<h2 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h2>
+<h3 id="1-input-fields-for-video-information">1. <strong>Input Fields for Video Information</strong><a class="headerlink" href="#1-input-fields-for-video-information" title="Permanent link">&para;</a></h3>
+<p>The form allows users to input essential metadata related to the video or image sequence being processed. The following fields are available:</p>
+<ul>
+<li><strong>Path</strong>: Enter the path to the image sequence or video file. Use the <strong>Browse</strong> button to open a file dialog and select the file.</li>
+<li><strong>Version Name</strong>: Enter a version name for the video or image sequence.</li>
+<li><strong>Description</strong>: A text field to enter a brief description of the video or image sequence.</li>
+<li><strong>Artist</strong>: The name of the artist responsible for this version of the file.</li>
+<li><strong>Link</strong>: A link related to the file or project, such as a URL to a project or a reference document.</li>
+<li><strong>Task</strong>: The specific task the video or image sequence corresponds to.</li>
+<li><strong>Project</strong>: The name of the project the video or image sequence is part of.</li>
+</ul>
+<h3 id="2-render-settings">2. <strong>Render Settings</strong><a class="headerlink" href="#2-render-settings" title="Permanent link">&para;</a></h3>
+<p>The <strong>Render Settings</strong> section includes various fields for selecting render options and configuring the output format.</p>
+<ul>
+<li><strong>Preset</strong>: Choose from available presets or select "None" to customize settings manually.</li>
+<li><strong>Engine</strong>: Select the engine to use for rendering (FFmpeg, Nuke, NukeTemplate, or RVIO).</li>
+<li><strong>FPS</strong>: Enter the frames per second for the output.</li>
+<li><strong>Resolution</strong>: Specify the resolution for the output file.</li>
+<li><strong>Codec</strong>: Enter the codec to use for encoding.</li>
+<li><strong>Extension</strong>: Specify the file extension for the output files (e.g., <code>.mp4</code>, <code>.exr</code>).</li>
+<li><strong>Slate</strong>: Enable or disable slate (usually used for preview purposes in the VFX industry).</li>
+<li><strong>Template</strong>: For the "NukeTemplate" engine, specify a path to a Nuke template file. The "Browse..." button allows you to select the template from your file system.</li>
+</ul>
+<h3 id="3-file-dialogs">3. <strong>File Dialogs</strong><a class="headerlink" href="#3-file-dialogs" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Browse Button</strong>: The "Browse..." button allows you to select the image sequence or video file through a file dialog. It is available next to the "Path" field.</li>
+<li><strong>Template Browse Button</strong>: For NukeTemplate engine, the "Browse..." button allows you to select a Nuke template file.</li>
+</ul>
+<h3 id="4-submit-button">4. <strong>Submit Button</strong><a class="headerlink" href="#4-submit-button" title="Permanent link">&para;</a></h3>
+<p>Once all the required fields are filled, clicking the <strong>Submit</strong> button will log all the input data. This helps to keep track of the user's selections for debugging and tracking purposes.</p>
+<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
+<p>Follow these steps to use the <strong>Dailies Tool</strong> UI:</p>
+<h3 id="1-launching-the-tool">1. <strong>Launching the Tool</strong><a class="headerlink" href="#1-launching-the-tool" title="Permanent link">&para;</a></h3>
+<p>To launch the Dailies Tool UI, ensure you have the necessary dependencies installed and your environment set up correctly.</p>
+<p>Run the following command to start the tool:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Run this command to launch the Dailies Tool UI</span>
+python<span class="w"> </span>ui.py
+</code></pre></div>
+<p>The UI window will appear, and you can start filling out the form.</p>
+<h3 id="2-filling-out-the-form">2. <strong>Filling Out the Form</strong><a class="headerlink" href="#2-filling-out-the-form" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Path</strong>: Click the <strong>Browse</strong> button next to the <strong>Path</strong> field to open a file dialog and select your video or image sequence.</li>
+<li><strong>Version Name</strong>: Enter the version name of the video/image sequence.</li>
+<li><strong>Description</strong>: Provide a short description of the video or image sequence.</li>
+<li><strong>Artist</strong>: Enter the name of the artist responsible for the current file.</li>
+<li><strong>Link</strong>: Add a relevant link, such as a project link or reference URL.</li>
+<li><strong>Task</strong>: Enter the task associated with the video or image sequence.</li>
+<li><strong>Project</strong>: Enter the project name to which the video or image sequence belongs.</li>
+</ul>
+<h3 id="3-choosing-render-settings">3. <strong>Choosing Render Settings</strong><a class="headerlink" href="#3-choosing-render-settings" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Preset</strong>: If available, select a preset from the dropdown. The options will load based on predefined settings in the <strong>presets</strong> folder.</li>
+<li><strong>Engine</strong>: Choose the rendering engine. Available engines include:</li>
+<li><strong>FFmpeg</strong>: The default option for video encoding.</li>
+<li><strong>Nuke</strong>: Use this option for Nuke-specific workflows.</li>
+<li><strong>NukeTemplate</strong>: Use a Nuke template for rendering.</li>
+<li><strong>RVIO</strong>: Use this for RVIO-based workflows.</li>
+<li><strong>FPS</strong>: Specify the FPS for the render.</li>
+<li><strong>Resolution</strong>: Define the resolution for the output.</li>
+<li><strong>Codec</strong>: Choose the codec for the output file (e.g., H.264, ProRes).</li>
+<li><strong>Extension</strong>: Select the file extension (e.g., <code>.mp4</code>, <code>.jpg</code>, <code>.exr</code>).</li>
+<li><strong>Slate</strong>: Check the <strong>Slate</strong> box if you want a slate to be added to the output.</li>
+<li><strong>Template</strong>: If you're using the <strong>NukeTemplate</strong> engine, you can choose a template file using the <strong>Browse</strong> button.</li>
+</ul>
+<h3 id="4-submitting-the-form">4. <strong>Submitting the Form</strong><a class="headerlink" href="#4-submitting-the-form" title="Permanent link">&para;</a></h3>
+<p>Once all the fields are filled out, click the <strong>Submit</strong> button to log the provided data. This will help track the input information for debugging and reference purposes. The submitted data is logged to both the console and a log file.</p>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<p>If you encounter any issues with the Dailies Tool UI, refer to the <a href="../troubleshooting/">Troubleshooting Guide</a> for solutions to common problems.</p>
+<h2 id="code-overview">Code Overview<a class="headerlink" href="#code-overview" title="Permanent link">&para;</a></h2>
+<p>Here’s an overview of the relevant code for interacting with the tool:</p>
+<h3 id="1-setting-up-the-logging">1. <strong>Setting Up the Logging</strong><a class="headerlink" href="#1-setting-up-the-logging" title="Permanent link">&para;</a></h3>
+<p>The logging configuration is set up at the beginning of the <code>ui.py</code> file. This ensures that all user input is logged for debugging and tracking.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Set up logging</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span>
+    <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>  <span class="c1"># Set the default logging level to INFO</span>
+    <span class="nb">format</span><span class="o">=</span><span class="n">LOG_FORMAT</span><span class="p">,</span>
+    <span class="n">handlers</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">(),</span>  <span class="c1"># Log to the console</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">FileHandler</span><span class="p">(</span><span class="n">LOG_FILE_PATH</span><span class="p">)</span>  <span class="c1"># Log to the log file</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="2-creating-the-ui">2. <strong>Creating the UI</strong><a class="headerlink" href="#2-creating-the-ui" title="Permanent link">&para;</a></h3>
+<p>The UI is created using <strong>PySide6</strong>, a Python binding for Qt. The layout is composed of multiple input fields, dropdowns, and buttons, as described earlier.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Example UI layout for form and render settings</span>
+<span class="n">form_layout</span> <span class="o">=</span> <span class="n">QFormLayout</span><span class="p">()</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">path_input</span> <span class="o">=</span> <span class="n">QLineEdit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>  <span class="c1"># Path input field</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">browse_button</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Browse...&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>  <span class="c1"># Browse button</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">browse_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">browse_file</span><span class="p">)</span>  <span class="c1"># Connect to file dialog</span>
+</code></pre></div>
+<h3 id="3-handling-form-submission">3. <strong>Handling Form Submission</strong><a class="headerlink" href="#3-handling-form-submission" title="Permanent link">&para;</a></h3>
+<p>When the user clicks the <strong>Submit</strong> button, the form data is logged, and the application is ready for the next operation.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">on_submit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Handles the submission of the form data, logging all fields.&quot;&quot;&quot;</span>
+    <span class="c1"># Collect user input and log it</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Path: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Version Name: </span><span class="si">{</span><span class="n">version</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Description: </span><span class="si">{</span><span class="n">description</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="c1"># Log all other input fields...</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Data submitted successfully!&quot;</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<p>For more advanced usage, custom presets can be created and stored in the <strong>presets</strong> folder. These presets are loaded when the tool starts up and can be selected from the <strong>Preset</strong> dropdown.</p>
+<p>If you have additional questions or need further assistance, please refer to the <a href="../troubleshooting/">Troubleshooting Guide</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>
