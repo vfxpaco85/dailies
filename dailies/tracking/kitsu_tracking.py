@@ -207,7 +207,6 @@ class KitsuTracking(TrackingSoftware):
             return None
 
         try:
-            project = gazu.project.get_project(self.project_id)
 
             if self.environment.entity_type == "shot":
                 entity = gazu.shot.get_shot(self.environment.entity_id)
@@ -245,9 +244,9 @@ class KitsuTracking(TrackingSoftware):
             gazu_comment = gazu.task.add_comment(task, status, comment + file_string)
 
             preview = gazu.task.add_preview(task, gazu_comment, video_path)
-
-            logging.info(f"Created version {version_name} for task {task['id']}")
-            logging.info(f"Uploaded QuickTime preview for version {version_name}")
+            if preview:
+                logging.info(f"Created version {version_name} for task {task['id']}")
+                logging.info(f"Uploaded QuickTime preview for version {version_name}")
 
         except Exception as e:
             logging.error(f"Error inserting version into Kitsu: {e}")

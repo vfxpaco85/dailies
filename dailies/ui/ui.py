@@ -21,8 +21,6 @@ from PySide6.QtWidgets import (
 from dailies.constant.main import (
     LOG_FORMAT,
     LOG_FILE_PATH,
-    ENV_VAR_CONFIG,
-    DEFAULT_PRESET_DIRECTORY,
     DEFAULT_TEMPLATE_DIRECTORY,
     FRAME_PADDING_FORMAT,
     FRAME_START_NUMBER,
@@ -31,7 +29,6 @@ from dailies.constant.engine import SUPPORTED_FILE_TYPES, IMAGE_SEQUENCES_FILE_T
 from dailies.constant.tracking import TRACKING_ENGINE
 from dailies.environment import Environment
 from dailies.factory import VideoEngineFactory, TrackingSoftwareFactory
-from dailies.preset import load_presets_from_folder
 
 # Set up logger
 logger = logging.getLogger(__name__)
@@ -257,8 +254,9 @@ class DailiesUI(QWidget):
         extension=None,
         resolution=None,
         fps=None,
-        options=None,
         template=None,
+        options=None,
+        slate=None,
     ):
         """
         Creates media based on engine type.
@@ -270,8 +268,9 @@ class DailiesUI(QWidget):
             extension (str, optional): The file extension (e.g., 'mov').
             resolution (tuple, optional): The resolution as (width, height).
             fps (int, optional): The frames per second.
-            options (dict, optional): Additional options.
             template (str, optional): The template path for 'Nuke-Template'.
+            options (dict, optional): Additional options.
+            slate (dict, optional): Additional slate data.
         """
         video_engine = VideoEngineFactory.get_video_engine(engine.lower())
         try:
@@ -285,6 +284,7 @@ class DailiesUI(QWidget):
                     resolution=resolution,
                     fps=fps,
                     options=options,
+                    slate=slate,
                 )
         except Exception as e:
             logger.error(f"Error during video creation: {e}")
@@ -642,8 +642,9 @@ class DailiesUI(QWidget):
                 extension,
                 resolution,
                 fps,
-                options,
                 template,
+                options,
+                slate_data,
             )
 
         # Create tracking version
