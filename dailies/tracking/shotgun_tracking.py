@@ -1,7 +1,7 @@
 import logging
 
 from dailies.constant.main import LOG_FORMAT, LOG_FILE_PATH
-from dailies.constant.tracking import TRACKING_LOGIN_USR, TRACKING_API_TOKEN
+from dailies.constant.tracking import TRACKING_LOGIN_USR
 from dailies.environment import Environment
 from dailies.tracking.tracking import TrackingSoftware
 

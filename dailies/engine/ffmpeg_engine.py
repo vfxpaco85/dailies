@@ -96,7 +96,7 @@ class FFmpegEngine(VideoEngine):
 
         # We don't need codec and pixel format when extracting image sequence from video
         input_file_extension = os.path.splitext(input_path)[1][1:].lower()
-        if not input_file_extension in VIDEO_FILE_TYPES and extension in IMAGE_SEQUENCES_FILE_TYPES:
+        if input_file_extension not in VIDEO_FILE_TYPES and extension in IMAGE_SEQUENCES_FILE_TYPES:
 
             # Get codec and pixel format for the given file extension
             codec, pix_fmt = FORMAT_CODECS["ffmpeg"][extension]
@@ -104,10 +104,11 @@ class FFmpegEngine(VideoEngine):
         # If slate data is provided, generate and add a slate frame (only for image sequences)
         slate_file = None
         if slate_data:
+            # Get the file extension from the input image sequence to match the slate format
             file_extension = input_path.split(".")[-1]
             slate_file = Path(DEFAULT_TMP_DIRECTORY) / f"slate_with_text.{file_extension}" # Single image for slate
             slate_file = slate_file.as_posix()  # Ensures forward slashes
-            logger.info(f"Generating slate file.")
+            logger.info("Generating slate file.")
             self.generate_slate_frame(slate_data, slate_file)
             logger.info(f"Slate file: {slate_file}")
 
@@ -221,7 +222,6 @@ class FFmpegEngine(VideoEngine):
         font_path = FFMPEG_FONT_PATH  # Path to the font file (adjust as needed)
 
         # Extract resolution width and height
-        width = int(resolution[0])
         height = int(resolution[1])
 
         # Calculate the total height of all lines with spacing between them
@@ -245,11 +245,6 @@ class FFmpegEngine(VideoEngine):
 
         # Join all drawtext filters with commas for FFmpeg
         drawtext_filter_str = ", ".join(drawtext_filters)
-
-        # Get the file extension from the input image sequence to match the slate format
-        file_extension = output_file.split(".")[
-            -1
-        ]  # Assuming output_file has the proper extension (e.g., jpg, png)
 
         # Prepare the FFmpeg command with the dynamic resolution
         command = [

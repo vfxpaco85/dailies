@@ -1,4 +1,3 @@
-import os
 from abc import ABC, abstractmethod
 
 from dailies.constant.main import DEFAULT_SLATE_TEMPLATE

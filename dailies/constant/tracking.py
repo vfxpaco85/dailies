@@ -21,7 +21,7 @@ TRACKING_ENGINE = os.getenv("TRACKING_ENGINE", "shotgun")  # Default to 'shotgun
 
 # Tracking credentials
 # If not set via environment variables, fallback to default values
-TRACKING_LOGIN_USER = os.getenv("TRACKING_LOGIN_USR", "USR")  # Set via environment or change here
+TRACKING_LOGIN_USR = os.getenv("TRACKING_LOGIN_USR", "USR")  # Set via environment or change here
 TRACKING_LOGIN_PWD = os.getenv("TRACKING_LOGIN_PWD", "PWD")  # Set via environment or change here
 TRACKING_API_TOKEN = os.getenv("TRACKING_API_TOKEN", "PWD")  # Set via environment or change here
 

@@ -119,7 +119,7 @@ class NukeEngine(VideoEngine):
             nuke.scriptClear()
 
             # Create read node for the input file (image sequence or video)
-            logger.info(f"Creating read node")
+            logger.info("Creating read node")
             read_node = nuke.createNode("Read")
             input_path = input_path.replace(
                 FRAME_PADDING_FORMAT, NUKE_FRAME_PADDING_FORMAT
@@ -142,7 +142,7 @@ class NukeEngine(VideoEngine):
             read_node["last"].setValue(last_frame)
 
             # Create write node for the output media
-            logger.info(f"Creating write node")
+            logger.info("Creating write node")
             write_node = nuke.createNode("Write")
             write_node["file"].setValue(output_path)
             write_node["file_type"].setValue(extension)
@@ -152,7 +152,7 @@ class NukeEngine(VideoEngine):
             # Dynamically select the appropriate configurator based on the extension
             write_node_configurator = None
             if extension in SUPPORTED_FILE_TYPES["nuke"] and options:
-                logger.info(f"Setting options")
+                logger.info("Setting options")
 
                 if extension == "mov":
                     write_node_configurator = MOVConfigurator()
@@ -186,7 +186,7 @@ class NukeEngine(VideoEngine):
             # Check if resizing is needed to match the target resolution
             input_resolution = read_node.width(), read_node.height()
             if input_resolution != resolution:
-                logger.info(f"Creating resize node")
+                logger.info("Creating resize node")
                 resize_node = nuke.createNode("Resize")
                 resize_node.setInput(0, read_node)
                 resize_node["resize"].setValue("fit")

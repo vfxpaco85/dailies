@@ -1,6 +1,3 @@
-import os
-import sys
-
 from dailies.ui.ui import DailiesUI
 from dailies.environment import Environment
 from dailies.preset import load_presets_from_folder
