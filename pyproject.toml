@@ -3,7 +3,7 @@ requires = ["setuptools>=64", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "dailies"
+name = "vfxdailies"
 description = "Tool for vfx/animation/film dailies production."
 readme = { file = "README.md", content-type = "text/markdown" }
 license = { text = "GPL-3.0-or-later" }
@@ -19,14 +19,14 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/vfxpaco85/dailies"
+Homepage = "https://github.com/vfxpaco85/vfxdailies"
 
 [project.optional-dependencies]
 testing = ["pytest", "pytest-cov", "mock"]
 lint = ["ruff"]
 
 [tool.setuptools]
-packages = ["dailies"]
+packages = ["vfxdailies"]
 include-package-data = true
 
 
